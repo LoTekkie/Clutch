@@ -28,16 +28,25 @@ ___
 ___
 ### Installation
 
-**Minion Addon Manager:**   
+**Minion Addon Manager:**  
+1. Start Minion Addon Manager.
+2. Choose `Elder Scrolls Online` from the games list on the left.
+3. Click on `Find More` at the top.
+4. Enter `Clutch` into the search bar.
+5. Click on `Install`.
 
-Not yet available on Minion, installation will have to be done manually.
-
-**Manual:**   
+**Manual (From Github):**   
 1. Navigate to <https://github.com/Ap0gee/Clutch>.
 2. Click on `Releases`. 
 3. Click on the `Source code (zip)` link within the latest release to download.
 4. Extract the zipped folder to `.../Documents/Elder Scrolls Online/live/AddOns`.
 5. Rename the folder to remove the version tag (`-v0.9.0`). The folder should be named `Clutch`.
+
+**Manual (From ESOUI):**
+1. Navigate to <https://www.esoui.com/addons.php>.
+2. Enter `Clutch` into the search bar.
+3. Click on `Download`.
+4. Extract the zipped folder to `.../Documents/Elder Scrolls Online/live/AddOns`.
 
 ___
 ### Aliases
