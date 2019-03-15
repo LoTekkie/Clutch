@@ -38,44 +38,44 @@ Clutch.description = "Clutch aims to prevent weapons from falling to the ground 
 Clutch.commands = {"/clutch", "/clch"}
 
 Clutch.collectibles = {
-	none = 0,
-	hats = {
-		hide_your_helm = 5002
-	}
+    none = 0,
+    hats = {
+        hide_your_helm = 5002
+    }
 }
 
 Clutch.colors = {
-	info = "eeeeee",
-	primary = "9ab3e5",
-	secondary = "6c757d",
-	success = "28a745",
-	warning = "ffc107",
-	danger = "dc3545",
+    info = "eeeeee",
+    primary = "9ab3e5",
+    secondary = "6c757d",
+    success = "28a745",
+    warning = "ffc107",
+    danger = "dc3545",
 }
 
 local function cStr(color, str)
-	return string.format("|c%s%s|r", color, str)
+    return string.format("|c%s%s|r", color, str)
 end
 
 local function buildHelpEntryCommand(command, description)
-	local addon_name = cStr(Clutch.colors.primary, "/"..string.lower(Clutch.name)) 
+    local addon_name = cStr(Clutch.colors.primary, "/"..string.lower(Clutch.name)) 
     local command = cStr(Clutch.colors.info, command)
     local description = cStr(Clutch.colors.info, description)
-	local sep = cStr(Clutch.colors.primary, "=>")
+    local sep = cStr(Clutch.colors.primary, "=>")
     return string.format("%s %s %s %s", addon_name, command, sep, description)
 end
 
 local function buildHelpEntry(key, value)
-	local key = cStr(Clutch.colors.info, key)
+    local key = cStr(Clutch.colors.info, key)
     local value = cStr(Clutch.colors.info, value)
-	local sep = cStr(Clutch.colors.primary, "=>")
-	return string.format("%s %s %s", key, sep, value)
+    local sep = cStr(Clutch.colors.primary, "=>")
+    return string.format("%s %s %s", key, sep, value)
 end
 
 local function buildHelpTitle(context)
     local context = cStr(Clutch.colors.info, context)
-	local title = cStr(Clutch.colors.primary, string.format("%s Help:", Clutch.name))
-	return string.format("%s %s", title, context)
+    local title = cStr(Clutch.colors.primary, string.format("%s Help:", Clutch.name))
+    return string.format("%s %s", title, context)
 end
 
 local function buildHelpSeperator(character, count)
@@ -84,96 +84,96 @@ local function buildHelpSeperator(character, count)
         sep = sep .. character
     end
     return cStr(Clutch.colors.secondary, sep)
-end	
+end 
 
 function Clutch.displayHelp(table_help)
-	 for index, command in pairs(table_help) do
+     for index, command in pairs(table_help) do
         d(command)
     end
 end 
 
-function Clutch.clutchWeapons()	
-	local collectible_hat_active = GetActiveCollectibleByType(COLLECTIBLE_CATEGORY_TYPE_HAT)
-	
-	if collectible_hat_active == Clutch.collectibles.none or collectible_hat_active == Clutch.collectibles.hats.hide_your_helm then
-		UseCollectible(Clutch.collectibles.hats.hide_your_helm)
-		UseCollectible(Clutch.collectibles.hats.hide_your_helm)
-	else
-		UseCollectible(Clutch.collectibles.hats.hide_your_helm)
-		UseCollectible(collectible_hat_active)
-	end
+function Clutch.clutchWeapons() 
+    local collectible_hat_active = GetActiveCollectibleByType(COLLECTIBLE_CATEGORY_TYPE_HAT)
+    
+    if collectible_hat_active == Clutch.collectibles.none or collectible_hat_active == Clutch.collectibles.hats.hide_your_helm then
+        UseCollectible(Clutch.collectibles.hats.hide_your_helm)
+        UseCollectible(Clutch.collectibles.hats.hide_your_helm)
+    else
+        UseCollectible(Clutch.collectibles.hats.hide_your_helm)
+        UseCollectible(collectible_hat_active)
+    end
 end
 
 function Clutch.onBoundKeyPress()
-	d(string.format("%s: %s", 
-		cStr(Clutch.colors.primary, Clutch.name), 
-		cStr(Clutch.colors.info, "Activated!")
-	))
-	
-	Clutch.clutchWeapons()
+    d(string.format("%s: %s", 
+        cStr(Clutch.colors.primary, Clutch.name), 
+        cStr(Clutch.colors.info, "Activated!")
+    ))
+    
+    Clutch.clutchWeapons()
 end
 
 function Clutch.onPlayerActivated()
-	if not Clutch.startup_info_displayed then
-		d(string.format("%s %s %s", 
-			cStr(Clutch.colors.primary, Clutch.name),
-			cStr(Clutch.colors.info, string.format("v%s ~", Clutch.version)), 			
-			cStr(Clutch.colors.primary, Clutch.author)
-		))
-		Clutch.startup_info_displayed = true
-	end	
-	
-	Clutch.clutchWeapons()
+    if not Clutch.startup_info_displayed then
+        d(string.format("%s %s %s", 
+            cStr(Clutch.colors.primary, Clutch.name),
+            cStr(Clutch.colors.info, string.format("v%s ~", Clutch.version)),           
+            cStr(Clutch.colors.primary, Clutch.author)
+        ))
+        Clutch.startup_info_displayed = true
+    end 
+    
+    Clutch.clutchWeapons()
 end
 
 function Clutch.onCommandEntered(args)
-	if args == 'activate' or args == 'a' then
-		Clutch.onBoundKeyPress()
-		
-	elseif args == 'info' or args == 'i' then
-		Clutch.displayHelp(Clutch.help.info)
-	
-	elseif args == 'help' or args == 'h' then
-		Clutch.displayHelp(Clutch.help.commands)
-	
-	else 
-		Clutch.displayHelp(Clutch.help.commands)
-	end
+    if args == 'activate' or args == 'a' then
+        Clutch.onBoundKeyPress()
+        
+    elseif args == 'info' or args == 'i' then
+        Clutch.displayHelp(Clutch.help.info)
+    
+    elseif args == 'help' or args == 'h' then
+        Clutch.displayHelp(Clutch.help.commands)
+    
+    else 
+        Clutch.displayHelp(Clutch.help.commands)
+    end
 end
 
 function Clutch.onAddonLoaded(eventCode, addonName)
-	if addonName ~= Clutch.name then return end
-	
-	EVENT_MANAGER:UnregisterForEvent(Clutch.name, EVENT_ADD_ON_LOADED)
+    if addonName ~= Clutch.name then return end
+    
+    EVENT_MANAGER:UnregisterForEvent(Clutch.name, EVENT_ADD_ON_LOADED)
 
-	ZO_CreateStringId("SI_BINDING_NAME_CLUTCH_WEAPONS", "Clutch Weapons")
-	
-	LSC:Register(Clutch.commands, function(...) Clutch.onCommandEntered(...)  end, "Invoke the Clutch addon")
-	
-	Clutch.help = {
-		commands = {
-			buildHelpSeperator("=", 20),
-			buildHelpTitle("Commands"),
-			buildHelpSeperator('=', 20),
-			buildHelpEntryCommand("[activate, a]",  "Activate Clutch and pick up your weapons."),
-			buildHelpEntryCommand("[help, h]",  "Display Clutch commands."),
-			buildHelpEntryCommand("[info, i]",  "Display information about Clutch."),
-			buildHelpSeperator("=", 20),
-		},
-		info = {
-			buildHelpSeperator("=", 14),
-			buildHelpTitle("Info"),
-			buildHelpSeperator('=', 14),
-			buildHelpEntry("Name", Clutch.name),
-			buildHelpEntry("Description", Clutch.description),
-			buildHelpEntry("Author", Clutch.author),
-			buildHelpEntry("Contact", Clutch.contact),
-			buildHelpEntry("Version", Clutch.version),
-			buildHelpSeperator('=', 14),
-		}
-	}
-	
-	EVENT_MANAGER:RegisterForEvent(Clutch.name, EVENT_PLAYER_ACTIVATED, Clutch.onPlayerActivated)
+    ZO_CreateStringId("SI_BINDING_NAME_CLUTCH_WEAPONS", "Clutch Weapons")
+    
+    LSC:Register(Clutch.commands, function(...) Clutch.onCommandEntered(...)  end, "Invoke the Clutch addon")
+    
+    Clutch.help = {
+        commands = {
+            buildHelpSeperator("=", 20),
+            buildHelpTitle("Commands"),
+            buildHelpSeperator('=', 20),
+            buildHelpEntryCommand("[activate, a]",  "Activate Clutch and pick up your weapons."),
+            buildHelpEntryCommand("[help, h]",  "Display Clutch commands."),
+            buildHelpEntryCommand("[info, i]",  "Display information about Clutch."),
+            buildHelpSeperator("=", 20),
+        },
+        info = {
+            buildHelpSeperator("=", 14),
+            buildHelpTitle("Info"),
+            buildHelpSeperator('=', 14),
+            buildHelpEntry("Name", Clutch.name),
+            buildHelpEntry("Description", Clutch.description),
+            buildHelpEntry("Author", Clutch.author),
+            buildHelpEntry("Contact", Clutch.contact),
+            buildHelpEntry("Version", Clutch.version),
+            buildHelpSeperator('=', 14),
+        }
+    }
+    
+    EVENT_MANAGER:RegisterForEvent(Clutch.name, EVENT_PLAYER_ACTIVATED, Clutch.onPlayerActivated)
 end
 
 EVENT_MANAGER:RegisterForEvent(Clutch.name, EVENT_ADD_ON_LOADED, Clutch.onAddonLoaded)

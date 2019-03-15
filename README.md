@@ -39,8 +39,6 @@ Not yet available on Minion, installation will have to be done manually.
 4. Extract the zipped folder to `.../Documents/Elder Scrolls Online/live/AddOns`.
 5. Rename the folder to remove the version tag (`-v0.9.0`). The folder should be named `Clutch`.
 
-
-
 ___
 ### Aliases
 The following aliases are available to Clutch commands:    
@@ -49,6 +47,7 @@ The following aliases are available to Clutch commands:
 **activate:** a    
 **help:** h   
 **info:** i  
+
 ___
 ### Usage
 
@@ -56,11 +55,12 @@ Clutch will automatically attempt to keep your weapons off the ground. If the ad
 no further action is required.
 
 **Manual:**  
+
 If you find your weapons fall to the ground, despite Clutch being properly loaded, you may manually activate Clutch with a bound key press or a slash command.  
 
 To bind Clutch to a key press, use the following steps:
 1. Open your main menu
-2. Navigate to Controls >> Addon Keybinds.
+2. Navigate to `Controls` then `Addon Keybinds`.
 3. Locate Clutch within the list of categories on the left.
 4. Bind Clutch to a key of your choice.
 
@@ -94,7 +94,7 @@ Manually activates Clutch and picks up your weapons. Below are the equivalent wa
     
 **info**
 
-Display information about Clutch. Below are some useage examples of this command:
+Display information about Clutch. Below are the equivalent ways of calling the command:  
 
     /clutch info
 	/clch info
