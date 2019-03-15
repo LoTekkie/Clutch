@@ -22,21 +22,24 @@
 
 ___
 ### Prerequisites
-1. [Elder Scrolls Online]()
-2. **Optional : [Minion Addon Manager]()
+1. [Elder Scrolls Online](https://www.elderscrollsonline.com/en-us/home)
+2. **[Optional]** : [Minion Addon Manager](https://minion.mmoui.com/)
 
 ___
 ### Installation
 
-**Minnion Addon Manager:**   
-Not yet available on windower, installation will have to be done manually.
+**Minion Addon Manager:**   
 
-**Manual:**
-1. Navigate to <https://github.com/Ap0gee/BattleStations>.
+Not yet available on Minion, installation will have to be done manually.
+
+**Manual:**   
+1. Navigate to <https://github.com/Ap0gee/Clutch>.
 2. Click on `Releases`. 
 3. Click on the `Source code (zip)` link within the latest release to download.
-4. Extract the zipped folder to `Windower4/addons/`.
-5. Rename the folder to remove the version tag (`-v0.9.0`). The folder should be named `BattleStations`.
+4. Extract the zipped folder to `.../Documents/Elder Scrolls Online/live/AddOns`.
+5. Rename the folder to remove the version tag (`-v0.9.0`). The folder should be named `Clutch`.
+
+
 
 ___
 ### Aliases
@@ -49,6 +52,18 @@ The following aliases are available to Clutch commands:
 ___
 ### Usage
 
+Clutch will automatically attempt to keep your weapons off the ground. If the addon is properly loaded, 
+no further action is required.
+
+**Manual:**  
+If you find your weapons fall to the ground, despite Clutch being properly loaded, you may manually activate Clutch with a bound key press or a slash command.  
+
+To bind Clutch to a key press, use the following steps:
+1. Open your main menu
+2. Navigate to Controls >> Addon Keybinds.
+3. Locate Clutch within the list of categories on the left.
+4. Bind Clutch to a key of your choice.
+
 Invoke the Clutch addon with the following commands:
     
     /clutch
@@ -60,9 +75,6 @@ ___
 **help**
 
 Displays the available Clutch commands. Below are the equivalent ways of calling the command:
-	
-	/clutch
-	/clch
 	
     /clutch help
     /clch help
@@ -93,7 +105,7 @@ Display information about Clutch. Below are some useage examples of this command
 ___
 ### Support
 **Having Issues with this addon?**
-* Please let me know [here]().
+* Please let me know [here](https://github.com/Ap0gee/Clutch/issues/new).
   
 **Have something to say?**
 * Send me some feedback here: <sjshovan@gmail.com>
@@ -123,7 +135,7 @@ ___
 
 ### License
 
-Copyright © 2018, [Sjshovan (Apogee)](https://github.com/Ap0gee).
+Copyright © 2019, [Sjshovan (Apogee)](https://github.com/Ap0gee).
 Released under the [BSD License](LICENSE).
 
 ***
