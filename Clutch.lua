@@ -24,16 +24,15 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
 ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-]]
-
-local LSC = LibStub("LibSlashCommander")
+]]--
 
 if Clutch == nil then Clutch = {} end
 
 Clutch.name = "Clutch"
-Clutch.version = "0.9.0"
+Clutch.version = "0.9.1"
 Clutch.author = "Sjshovan (Apogee)"
 Clutch.contact = "Sjshovan@Gmail.com"
+Clutch.url_readme = "https://github.com/Ap0gee/Clutch"
 Clutch.description = "Clutch aims to prevent weapons from falling to the ground and grants the ability to pick them back up if they do."
 Clutch.commands = {"/clutch", "/clch"}
 
@@ -61,14 +60,14 @@ local function buildHelpEntryCommand(command, description)
     local addon_name = cStr(Clutch.colors.primary, "/"..string.lower(Clutch.name)) 
     local command = cStr(Clutch.colors.info, command)
     local description = cStr(Clutch.colors.info, description)
-    local sep = cStr(Clutch.colors.primary, "=>")
+    local sep = cStr(Clutch.colors.secondary, "=>")
     return string.format("%s %s %s %s", addon_name, command, sep, description)
 end
 
 local function buildHelpEntry(key, value)
-    local key = cStr(Clutch.colors.info, key)
+    local key = cStr(Clutch.colors.primary, key)
     local value = cStr(Clutch.colors.info, value)
-    local sep = cStr(Clutch.colors.primary, "=>")
+    local sep = cStr(Clutch.colors.secondary, "=>")
     return string.format("%s %s %s", key, sep, value)
 end
 
@@ -121,8 +120,8 @@ function Clutch.onPlayerActivated()
             cStr(Clutch.colors.primary, Clutch.author)
         ))
         Clutch.startup_info_displayed = true
-    end 
-    
+    end
+
     Clutch.clutchWeapons()
 end
 
@@ -148,7 +147,9 @@ function Clutch.onAddonLoaded(eventCode, addonName)
 
     ZO_CreateStringId("SI_BINDING_NAME_CLUTCH_WEAPONS", "Clutch Weapons")
     
-    LSC:Register(Clutch.commands, function(...) Clutch.onCommandEntered(...)  end, "Invoke the Clutch addon")
+    for index, command in pairs(Clutch.commands) do
+        SLASH_COMMANDS[command] = Clutch.onCommandEntered
+    end 
     
     Clutch.help = {
         commands = {
@@ -168,11 +169,12 @@ function Clutch.onAddonLoaded(eventCode, addonName)
             buildHelpEntry("Description", Clutch.description),
             buildHelpEntry("Author", Clutch.author),
             buildHelpEntry("Contact", Clutch.contact),
+            buildHelpEntry("README", Clutch.url_readme),
             buildHelpEntry("Version", Clutch.version),
             buildHelpSeperator('=', 14),
         }
     }
-    
+
     EVENT_MANAGER:RegisterForEvent(Clutch.name, EVENT_PLAYER_ACTIVATED, Clutch.onPlayerActivated)
 end
 

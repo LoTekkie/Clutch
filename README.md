@@ -1,5 +1,5 @@
 **Author:** [Sjshovan (Apogee)](https://github.com/Ap0gee)  
-**Version:** v0.9.0  
+**Version:** v0.9.1  
 
 
 # Clutch
@@ -40,7 +40,7 @@ ___
 2. Click on `Releases`. 
 3. Click on the `Source code (zip)` link within the latest release to download.
 4. Extract the zipped folder to `.../Documents/Elder Scrolls Online/live/AddOns`.
-5. Rename the folder to remove the version tag (`-v0.9.0`). The folder should be named `Clutch`.
+5. Rename the folder to remove the version tag (`-v0.9.1`). The folder should be named `Clutch`.
 
 **Manual (From ESOUI):**
 1. Navigate to <https://www.esoui.com/addons.php>.
@@ -77,28 +77,28 @@ Invoke the Clutch addon with the following commands:
     
     /clutch
     /clch
-	
+    
 ___    
 ### Commands 
 
 **help**
 
 Displays the available Clutch commands. Below are the equivalent ways of calling the command:
-	
+    
     /clutch help
     /clch help
-	
-	/clutch h
-	/clch h
-	
+    
+    /clutch h
+    /clch h
+    
 **activate** 
 
 Manually activates Clutch and picks up your weapons. Below are the equivalent ways of calling the command:
-	
+    
     /clutch activate
     /clch activate
-	
-	/clutch a
+    
+    /clutch a
     /clch a
     
 **info**
@@ -106,10 +106,10 @@ Manually activates Clutch and picks up your weapons. Below are the equivalent wa
 Display information about Clutch. Below are the equivalent ways of calling the command:  
 
     /clutch info
-	/clch info
+    /clch info
 
-	/clutch i
-	/clch i
+    /clutch i
+    /clch i
     
 ___
 ### Support
@@ -128,6 +128,11 @@ ___
 ___
 ### Change Log
 
+**v0.9.1** - 3/16/2019
+- **Remove:** libStub and LibSlashCommander dependencies removed.
+- **Update:** Cli colors changed.
+- **Add:** README url added to info display.
+
 **v0.9.0** - 3/15/2019
 - Initial release
 
@@ -135,7 +140,6 @@ ___
 ### Known Issues
 
 None
-
 ___    
 ### TODOS
 
