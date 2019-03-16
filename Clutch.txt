@@ -2,12 +2,7 @@
 ## Description: Clutch aims to prevent weapons from falling to the ground and grants the ability to pick them back up if they do.
 ## APIVersion: 100026
 ## Author: |c9ab3e5Sjshovan (Apogee)|r
-## Version: 0.9.0
-## OptionalDependsOn: LibStub LibSlashCommander
-
-lib/LibStub/LibStub.lua
-lib/LibSlashCommander/LibSlashCommander.lua
-lib/LibSlashCommander/descriptions/$(language).lua
+## Version: 0.9.1
 
 Clutch.lua
 bindings.xml
