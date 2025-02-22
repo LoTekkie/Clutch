@@ -1,5 +1,5 @@
 --[[
-Copyright © 2019, Sjshovan (Apogee)
+Copyright © 2019-2025, Sjshovan (LoTekkie)
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -17,7 +17,7 @@ modification, are permitted provided that the following conditions are met:
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL  Sjshovan (Apogee) BE LIABLE FOR ANY
+DISCLAIMED. IN NO EVENT SHALL  Sjshovan (LoTekkie) BE LIABLE FOR ANY
 DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
 LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
@@ -29,10 +29,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 if Clutch == nil then Clutch = {} end
 
 Clutch.name = "Clutch"
-Clutch.version = "0.9.1"
-Clutch.author = "Sjshovan (Apogee)"
+Clutch.version = "1.1.0"
+Clutch.api_version = "101044"
+Clutch.author = "Sjshovan (LoTekkie)"
 Clutch.contact = "Sjshovan@Gmail.com"
-Clutch.url_readme = "https://github.com/Ap0gee/Clutch"
+Clutch.url_readme = "https://github.com/LoTekkie/Clutch"
 Clutch.description = "Clutch aims to prevent weapons from falling to the ground and grants the ability to pick them back up if they do."
 Clutch.commands = {"/clutch", "/clch"}
 
@@ -92,7 +93,7 @@ function Clutch.displayHelp(table_help)
 end 
 
 function Clutch.clutchWeapons() 
-    local collectible_hat_active = GetActiveCollectibleByType(COLLECTIBLE_CATEGORY_TYPE_HAT)
+    local collectible_hat_active = GetActiveCollectibleByCategoryType(COLLECTIBLE_CATEGORY_TYPE_HAT)
     
     if collectible_hat_active == Clutch.collectibles.none or collectible_hat_active == Clutch.collectibles.hats.hide_your_helm then
         UseCollectible(Clutch.collectibles.hats.hide_your_helm)
@@ -147,11 +148,11 @@ function Clutch.onAddonLoaded(eventCode, addonName)
 
     ZO_CreateStringId("SI_BINDING_NAME_CLUTCH_WEAPONS", "Clutch Weapons")
     
-    for index, command in pairs(Clutch.commands) do
+    for _, command in ipairs(Clutch.commands) do
         SLASH_COMMANDS[command] = Clutch.onCommandEntered
-    end 
-    
-    Clutch.help = {
+    end
+
+       Clutch.help = {
         commands = {
             buildHelpSeperator("=", 20),
             buildHelpTitle("Commands"),
@@ -174,7 +175,7 @@ function Clutch.onAddonLoaded(eventCode, addonName)
             buildHelpSeperator('=', 14),
         }
     }
-
+    
     EVENT_MANAGER:RegisterForEvent(Clutch.name, EVENT_PLAYER_ACTIVATED, Clutch.onPlayerActivated)
 end
 
